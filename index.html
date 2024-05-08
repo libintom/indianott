@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Latest Indian OTT Releases</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .article {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .article h2 {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Latest Indian OTT Releases</h1>
+    <div id="articles"></div>
+
+    <script>
+        // Replace with your RapidAPI key
+        var apiKey = 'f4b2c997f8mshbe7dff85b1ee19cp182b96jsneafdba8684ed';
+        var apiEndpoint = 'https://rapidapi.com/bhaskarreddyakepati/api/ott-release-updates';
+
+        fetch(apiEndpoint, {
+            headers: {
+                'X-RapidAPI-Key': apiKey
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            var articlesDiv = document.getElementById('articles');
+            data.forEach(article => {
+                var articleDiv = document.createElement('div');
+                articleDiv.className = 'article';
+                articleDiv.innerHTML = `
+                    <h2>${article.title}</h2>
+                    <p>${article.description}</p>
+                    <a href="${article.link}" target="_blank">Read more</a>
+                `;
+                articlesDiv.appendChild(articleDiv);
+            });
+        })
+        .catch(error => console.error('Error:', error));
+    </script>
+</body>
+</html>
