@@ -23,12 +23,13 @@
 
     <script>
         // Replace with your RapidAPI key
-        var apiKey = 'f4b2c997f8mshbe7dff85b1ee19cp182b96jsneafdba8684ed';
+        var apiKey = '6bd08cfc6emsha317c32f9167266p194e65jsn982e896efb11';
         var apiEndpoint = 'https://ott-release-updates.p.rapidapi.com/posts/previousreleasess?sort=vote_average';
 
         fetch(apiEndpoint, {
+		method: 'GET',
             headers: {
-		'X-RapidAPI-Key': 'f4b2c997f8mshbe7dff85b1ee19cp182b96jsneafdba8684ed',
+		'X-RapidAPI-Key': apiKey,
 		'X-RapidAPI-Host': 'ott-release-updates.p.rapidapi.com'
 	}
         })
@@ -39,9 +40,9 @@
                 var articleDiv = document.createElement('div');
                 articleDiv.className = 'article';
                 articleDiv.innerHTML = `
-                    <h2>${article.title}</h2>
+                    <h2>${article.movie_name}</h2>
                     <p>${article.description}</p>
-                    <a href="${article.link}" target="_blank">Read more</a>
+                    <a href="${article.video_url}" target="_blank">Read more</a>
                 `;
                 articlesDiv.appendChild(articleDiv);
             });
