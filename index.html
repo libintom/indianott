@@ -24,28 +24,27 @@
     <script>
         // Replace with your RapidAPI key
         var apiKey = '6bd08cfc6emsha317c32f9167266p194e65jsn982e896efb11';
-        var apiEndpoint = 'https://ott-release-updates.p.rapidapi.com/posts/previousreleasess?sort=vote_average';
+        var apiEndpoint = 'https://elonmu.sh/api';
 
         fetch(apiEndpoint, {
 		method: 'GET',
             headers: {
 		'X-RapidAPI-Key': apiKey,
-		'X-RapidAPI-Host': 'ott-release-updates.p.rapidapi.com'
+		'X-RapidAPI-Host': 'uselessfacts.jsph.pl'
 	}
         })
         .then(response => response.json())
         .then(data => {
             var articlesDiv = document.getElementById('articles');
-            data.forEach(article => {
                 var articleDiv = document.createElement('div');
                 articleDiv.className = 'article';
                 articleDiv.innerHTML = `
-                    <h2>${article.movie_name}</h2>
-                    <p>${article.description}</p>
-                    <a href="${article.video_url}" target="_blank">Read more</a>
+                    <h2>${data.title}</h2>
+		    <label>Source:${data.source}</label>
+                    <p>${data.description}</p>
+                    <a href="${data.url}" target="_blank">Read more</a>
                 `;
-                articlesDiv.appendChild(articleDiv);
-            });
+                // articlesDiv.appendChild(articleDiv);
         })
         .catch(error => console.error('Error:', error));
     </script>
